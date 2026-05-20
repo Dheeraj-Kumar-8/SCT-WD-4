@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 04 - To-Do Web App</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <span class="shape s1"></span>
+    <span class="shape s2"></span>
+    <span class="shape s3"></span>
+    <span class="shape s4"></span>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="badge">TASK 04</span>
+      <h1>To-Do Web App</h1>
+      <p>Capture tasks fast, schedule the details, and keep momentum.</p>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <span id="countAll">0</span>
+        <span>Total</span>
+      </div>
+      <div class="stat">
+        <span id="countActive">0</span>
+        <span>Active</span>
+      </div>
+      <div class="stat">
+        <span id="countDone">0</span>
+        <span>Done</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="app">
+    <section class="panel form-panel">
+      <h2>Create Task</h2>
+      <form id="taskForm" autocomplete="off">
+        <label class="field">
+          <span>Title</span>
+          <input type="text" id="taskTitle" placeholder="Write the task headline" required />
+        </label>
+
+        <label class="field">
+          <span>Notes</span>
+          <textarea id="taskNotes" placeholder="Add details or next steps"></textarea>
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Due date</span>
+            <input type="date" id="taskDate" />
+          </label>
+          <label class="field">
+            <span>Due time</span>
+            <input type="time" id="taskTime" />
+          </label>
+        </div>
+
+        <p id="formNote" class="form-note" role="status" aria-live="polite"></p>
+
+        <div class="form-actions">
+          <button class="primary" type="submit" id="submitBtn">Add task</button>
+          <button class="ghost" type="button" id="cancelBtn">Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="list-header">
+        <h2>Tasks</h2>
+        <div class="filters" role="tablist" aria-label="Task filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="active" type="button">Active</button>
+          <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+        </div>
+      </div>
+
+      <div class="list-tools">
+        <input type="search" id="searchInput" placeholder="Search title or notes" />
+        <select id="sortSelect" aria-label="Sort tasks">
+          <option value="due">Sort: due date</option>
+          <option value="created">Sort: newest</option>
+          <option value="title">Sort: title</option>
+        </select>
+      </div>
+
+      <div id="taskList" class="task-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <template id="taskTemplate">
+    <article class="task-card">
+      <div class="task-main">
+        <h3 class="task-title"></h3>
+        <p class="task-notes"></p>
+        <div class="task-meta">
+          <span class="meta due"></span>
+          <span class="meta created"></span>
+        </div>
+      </div>
+      <div class="task-actions">
+        <button class="ghost complete-btn" type="button">Mark complete</button>
+        <button class="ghost edit-btn" type="button">Edit</button>
+        <button class="danger delete-btn" type="button">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
